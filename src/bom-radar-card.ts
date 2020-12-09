@@ -29,6 +29,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
     return document.createElement('bom-radar-card-editor') as LovelaceCardEditor;
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   public static getStubConfig(): object {
     return {};
   }
@@ -76,10 +77,10 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
           <title>BOM Radar Card</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="stylesheet" href="/local/community/bom-radar-card/leaflet.css"/>
-          <link rel="stylesheet" href="/hacsfiles/bom-radar-card/leaflet.toolbar.min.css"/>
-          <script src="/hacsfiles/bom-radar-card/leaflet.js"></script>
-          <script src="/hacsfiles/bom-radar-card/leaflet.toolbar.min.js"></script>
+          <link rel="stylesheet" href="/local/bom-radar-card/leaflet.css"/>
+          <link rel="stylesheet" href="/local/bom-radar-card/leaflet.toolbar.min.css"/>
+          <script src="/local/bom-radar-card/leaflet.js"></script>
+          <script src="/local/bom-radar-card/leaflet.toolbar.min.js"></script>
           <style>
             body {
               margin: 0;
@@ -110,7 +111,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
         <body onload="resizeWindow()">
           <span>
             <div id="color-bar" style="height: 8px;">
-              <img id="img-color-bar" src="/hacsfiles/bom-radar-card/radar-colour-bar.png" height="8" style="vertical-align: top" />
+              <img id="img-color-bar" src="/local/bom-radar-card/radar-colour-bar.png" height="8" style="vertical-align: top" />
             </div>
             <div id="mapid" style="height: 492px;"></div>
             <div id="div-progress-bar" style="height: 8px; background-color: white;">
@@ -231,7 +232,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                 var recenterAction = L.Toolbar2.Action.extend({
                   options: {
                       toolbarIcon: {
-                          html: '<img src="/hacsfiles/bom-radar-card/recenter.png" width="24" height="24">',
+                          html: '<img src="/local/bom-radar-card/recenter.png" width="24" height="24">',
                           tooltip: 'Re-center'
                       }
                   },
@@ -247,7 +248,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                 var playAction = L.Toolbar2.Action.extend({
                   options: {
                       toolbarIcon: {
-                          html: '<img id="playButton" src="/hacsfiles/bom-radar-card/pause.png" width="24" height="24">',
+                          html: '<img id="playButton" src="/local/bom-radar-card/pause.png" width="24" height="24">',
                           tooltip: 'Pause'
                       }
                   },
@@ -255,9 +256,9 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                   addHooks: function () {
                     run = !run;
                     if (run) {
-                      document.getElementById("playButton").src = "/hacsfiles/bom-radar-card/pause.png"
+                      document.getElementById("playButton").src = "/local/bom-radar-card/pause.png"
                     } else {
-                      document.getElementById("playButton").src = "/hacsfiles/bom-radar-card/play.png"
+                      document.getElementById("playButton").src = "/local/bom-radar-card/play.png"
                     }
                   }
                 });
@@ -266,7 +267,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                 var skipbackAction = L.Toolbar2.Action.extend({
                   options: {
                       toolbarIcon: {
-                          html: '<img src="/hacsfiles/bom-radar-card/skip-back.png" width="24" height="24">',
+                          html: '<img src="/local/bom-radar-card/skip-back.png" width="24" height="24">',
                           tooltip: 'Previous Frame'
                       }
                   },
@@ -280,7 +281,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
                 var skipnextAction = L.Toolbar2.Action.extend({
                   options: {
                       toolbarIcon: {
-                          html: '<img src="/hacsfiles/bom-radar-card/skip-next.png" width="24" height="24">',
+                          html: '<img src="/local/bom-radar-card/skip-next.png" width="24" height="24">',
                           tooltip: 'Next Frame'
                       }
                   },
@@ -365,7 +366,7 @@ export class BomRadarCard extends LitElement implements LovelaceCard {
               ${
                 this._config.show_marker === true
                   ? "var myIcon = L.icon({ \
-                       iconUrl: '/hacsfiles/bom-radar-card/'+svg_icon, \
+                       iconUrl: '/local/bom-radar-card/'+svg_icon, \
                        iconSize: [16, 16], \
                      }); \
                      L.marker([markerLat, markerLon], { icon: myIcon, interactive: false }).addTo(radarMap);"
